@@ -18,7 +18,7 @@ const bot = new TelegramBot(process.env.BOT_TOKEN, { polling: true,
     }
 });
 
-app.post('/api/resgister', (req, res) => {
+app.post('/api/resgister', async (req, res) => {
     // GET DATA FROM CLIENT
     const data = req.body; 
 
