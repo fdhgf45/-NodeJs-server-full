@@ -18,9 +18,9 @@ const bot = new TelegramBot(process.env.BOT_TOKEN, { polling: true,
     }
 });
 
-app.post('/api/resgister', async (req, res) => {
+app.post('/api/resgister', (req, res) => {
     // GET DATA FROM CLIENT
-    const data = req.body; 
+    const values = req.body; 
 
     const result = {
         "status": 0,
@@ -53,7 +53,7 @@ app.post('/api/resgister', async (req, res) => {
         });
 
         try {
-            await axios.get(`${process.env.WEBHOOK_URL}?${params.toString()}`);
+            axios.get(`${process.env.WEBHOOK_URL}?${params.toString()}`);
             bot.sendMessage(process.env.CHAT_ID, '✅ Thêm dữ liệu vào Sheet thành công.');
         } catch (err) {
             bot.sendMessage(process.env.CHAT_ID, '❌ Thêm vào Google Sheet không thành công, liên hệ <code>@otis_cua</code>', { parse_mode: 'html' });
